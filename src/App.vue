@@ -20,7 +20,7 @@ export default {
     return{
       isPlaying: false,
       gameOver: true,
-      comment: 
+      comment: '',
     }
   },
   methods: {
