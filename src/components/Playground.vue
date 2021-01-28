@@ -31,6 +31,7 @@ export default {
       youScore: 0,
       browserScore: 0,
       totalScore: 0,
+      scoreComment:'',
       youOption: null,
       browserOption: null,
       options: [
@@ -65,8 +66,13 @@ export default {
       if(this.totalScore>=5){
         
         setTimeout(() => {
-          this.$emit('endGame');
-        }, 3000);
+          if(this.youScore > this.browserScore){
+            this.scoreComment='You Win!';
+          }else{
+            this.scoreComment='You Loose!';
+          }
+          this.$emit('endGame', this.scoreComment);
+        }, 250);
       }else{
         console.log(this.totalScore);
       }

@@ -1,8 +1,8 @@
 <template>
   <h1>Rock paper Scissors</h1>
   <p class="info">
-    <span v-if="!isPlaying">You will engage in a best of 5 rounds against the browser. The side with the most points after the 5 rounds will win</span>
-    <span v-if="gameOver">{{comment}}</span>
+    <span v-if="!isPlaying">You will engage in a best of 5 rounds against the browser. The side with the most points after the 5 rounds will win</span> <br>
+    <h2 class="comment" v-if="!isPlaying">{{comment}}</h2>
   </p>
   <button @click="togglePlay" :disabled="isPlaying" class="play">Play</button>
   <Playground v-if="isPlaying" @endGame="endGame" :gameOver="gameOver"/>
@@ -27,7 +27,8 @@ export default {
     togglePlay(){
       this.isPlaying=!this.isPlaying;
     },
-    endGame(){
+    endGame(comment){
+      this.comment=comment;
       this.togglePlay();
       document.querySelector('button').innerHTML='Play again!';
     }
@@ -52,5 +53,8 @@ button{
   padding: 1em 2em;
   border: 0;
   outline: none;
+}
+.comment{
+  font-size: 64px;
 }
 </style>
